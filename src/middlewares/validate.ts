@@ -61,3 +61,25 @@ export const loginSchema = yup.object().shape({
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
 });
+
+// Yup Product Schema for individual product
+const productSchema = yup.object().shape({
+  name: yup.string().required("Product name is required"),
+  qty: yup
+    .number()
+    .positive("Quantity must be a positive number")
+    .required("Quantity is required"),
+  rate: yup
+    .number()
+    .positive("Rate must be a positive number")
+    .required("Rate is required"),
+});
+
+// Yup addProducts Schema
+export const addProductsSchema = yup.object().shape({
+  products: yup
+    .array()
+    .of(productSchema)
+    .min(1, "At least one product is required")
+    .required("Products are required"),
+});
