@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth-route";
 import productRoutes from "./routes/product-route";
+import quoteRoutes from "./routes/quote-route";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/product", productRoutes);
+app.use("/api/quote", quoteRoutes);
 
 const PORT = process.env.PORT || 5000;
 const mongoUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/invoices";
