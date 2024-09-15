@@ -2,7 +2,11 @@ import puppeteer from "puppeteer";
 import { IProduct } from "../models/product-model";
 
 export const generatePDF = async (products: IProduct[]): Promise<Buffer> => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    executablePath: "/usr/bin/chromium",
+  });
+
   const page = await browser.newPage();
 
   const total = products.reduce((acc, itr) => acc + itr.total, 0);
