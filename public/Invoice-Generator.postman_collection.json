@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "7206dd3f-cc2a-4011-a953-b287dcc840ee",
+		"name": "Invoice-Generator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25003391"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Gulshan Baraik\",\r\n  \"email\": \"gulshan.baraik@example.com\",\r\n  \"password\": \"password123\"\r\n}"
+				},
+				"url": "https://invoice-generator-qgz8.onrender.com/api/auth/registration"
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"anand.patel@example.com\",\r\n  \"password\": \"password123\"\r\n}"
+				},
+				"url": "https://invoice-generator-qgz8.onrender.com/api/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Products and Generate Invoice",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <jwt_access_token>",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"name\": \"Product A\",\r\n      \"qty\": 34,\r\n      \"rate\": 120\r\n    },\r\n    {\r\n      \"name\": \"Product B\",\r\n      \"qty\": 24,\r\n      \"rate\": 150\r\n    },\r\n    {\r\n      \"name\": \"Product C\",\r\n      \"qty\": 40,\r\n      \"rate\": 125\r\n    }\r\n  ]\r\n}"
+				},
+				"url": "https://invoice-generator-qgz8.onrender.com/api/product/addProducts"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Invoices",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <jwt_access_token>",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": "https://invoice-generator-qgz8.onrender.com/api/quote/allInvoices"
+			},
+			"response": []
+		}
+	]
+}
